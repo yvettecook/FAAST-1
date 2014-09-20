@@ -2,6 +2,7 @@ class Station
 
 	def initialize
 		@trains = []
+		@users = []
 	end
 
 	def train_count
@@ -20,6 +21,18 @@ class Station
 	def allow_leave(train)
 		train.travel
 		@trains.delete(train)
+	end
+
+	def user_count
+		@users.count
+	end
+
+	def let_enter(user)
+		@users << user
+	end
+
+	def let_exit(user)
+		@users.delete(user)
 	end
 
 end
