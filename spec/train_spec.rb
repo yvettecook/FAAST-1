@@ -1,8 +1,10 @@
 require './lib/train.rb'
+require './lib/station.rb'
 
 describe  Train do
 
 let(:train) {Train.new}
+let(:station) {Station.new}
 
 	it "has at least one coach" do
 		expect(train.coach_count).to eq(1)

@@ -31,23 +31,4 @@ describe Station do
 		station.allow_leave(train)
 	end
 
-	it "has no users at opening" do
-		expect(station.user_count).to eq(0)
-	end
-
-	it "can allow users enter" do
-		user = double :user
-		station.let_enter(user)
-		expect(station.user_count).to eq(1)
-	end
-
-	it "can allow users exit" do
-		user = double :user
-		station.let_enter(user)
-		station.let_exit(user)
-		expect(station.user_count).to eq(0)
-	end
-
-	
-
 end

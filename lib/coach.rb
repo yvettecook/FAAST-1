@@ -1,11 +1,7 @@
+require_relative 'user_container'
+
 class Coach
 
-	def initialize
-		@users = []
-	end
-
-	def users_count
-		@users.count
-	end
+	include UserContainer
 
 end
