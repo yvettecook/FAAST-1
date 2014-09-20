@@ -8,8 +8,18 @@ class Station
 		@trains.count
 	end
 
-	def accept(train)
+	def allow_in(train)
 		@trains << train
+	end
+
+	def allow_stop(train)
+		train.stop
+		allow_in(train)
+	end
+
+	def allow_leave(train)
+		train.travel
+		@trains.delete(train)
 	end
 
 end
