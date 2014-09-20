@@ -8,4 +8,8 @@ class Station
 		@trains.count
 	end
 
+	def accept(train)
+		@trains << train
+	end
+
 end
