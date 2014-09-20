@@ -4,8 +4,13 @@ describe  Train do
 
 let(:train) {Train.new}
 
-	it "has coaches" do
-		expect(train).to have_coaches
+	it "has at least one coach" do
+		expect(train.coach_count).to eq(1)
+	end
+
+	it "can have several coaches" do
+		train = Train.new([:coach1, :coach2])
+		expect(train.coach_count).to eq(2)
 	end
 
 	it "should be at a station" do

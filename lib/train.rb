@@ -1,6 +1,6 @@
 class Train
 
-	def initialize(coaches=1)
+	def initialize(coaches=[1])
 		@coaches = coaches
 		stop
 	end
@@ -21,4 +21,7 @@ class Train
 		@at_station = true
 	end
 
+	def coach_count
+		@coaches.count
+	end
 end
