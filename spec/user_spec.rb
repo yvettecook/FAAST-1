@@ -15,5 +15,12 @@ describe User do
 		expect(user).to be_in_station
 	end
 
+	it "can touch out to exit a station" do
+		station = double :station
+		user.touch_in(station)
+		user.touch_out(station)
+		expect(user).not_to be_in_station
+	end
+
 
 end
