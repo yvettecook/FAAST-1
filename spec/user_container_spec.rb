@@ -16,12 +16,12 @@ describe PassengerHolder do
 		expect(space.user_count).to eq(0)
 	end
 
-	it "can allow users to enter" do
+	it "can let users enter" do
 		space.let_enter(user)
 		expect(space.user_count).to eq(1)
 	end
 
-	it "can allow users to exit" do
+	it "can let users exit" do
 		space.let_enter(user)
 		space.let_exit(user)
 		expect(space.user_count).to eq(0)

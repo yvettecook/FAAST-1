@@ -11,7 +11,7 @@ describe User do
 		expect(user).not_to be_in_station
 	end
 
-	it "can be touch in to enter a station" do
+	it "can touch in to enter a station" do
 		user.touch_in(station)
 		expect(user).to be_in_station
 	end
@@ -26,22 +26,29 @@ describe User do
 		expect(user).not_to be_in_coach
 	end
 
-	it "can enter a train coach from a station" do
+	it "can board a train coach from a station" do
 		user.touch_in(station)
-		user.enter(coach)
+		user.board_coach(station, coach)
 		expect(user).not_to be_in_station
 		expect(user).to be_in_coach
 	end
 
-	it "can exit a coach to a station" do
+	it "can alight at a station from a coach" do
 		user.touch_in(station)
-		user.enter(coach)
-		user.exit(coach)
+		user.board_coach(station, coach)
+		user.alight_station(coach, station)
 		expect(user).not_to be_in_coach
 		expect(user).to be_in_station
 	end
 
+	it "should be allowed to enter a station after touching in" do
+		expect(station).to receive(:let_enter).with(user)
+		user.touch_in(station)
+	end
 
-
+	it "should be allowed to exit a station after touching out" do
+		expect(station).to receive(:let_exit).with(user)
+		user.touch_out(station)
+	end
 
 end

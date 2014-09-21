@@ -1,34 +1,36 @@
 class User
 
-	def initialize
-		@in_station = false
-		@in_coach = false
+	def initialize(station=false, coach=false)
+		@station = station
+		@coach = coach
 	end
 
 	def in_station?
-		@in_station
+		@station
 	end
 
 	def touch_in(station)
-		@in_station = true
+		@station = station
+		station.let_enter(self)
 	end
 
 	def touch_out(station)
-		@in_station = false
+		@station = false
+		station.let_exit(self)
 	end
 
 	def in_coach?
-		@in_coach
+		@coach
 	end
 
-	def enter(coach)
-		@in_station = false
-		@in_coach = true
+	def board_coach(station, coach)
+		@station = false
+		@coach = coach
 	end
 
-	def exit(coach)
-		@in_station = true
-		@in_coach = false
+	def alight_station(coach, station)
+		@station = station
+		@coach = false
 	end
 
 

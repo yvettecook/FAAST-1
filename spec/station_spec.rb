@@ -5,6 +5,7 @@ describe Station do
 
 	let(:station) {Station.new}
 	let(:train) {Train.new}
+	let(:user) {User.new}
 	
 	it "has no train" do
 		expect(station.train_count).to eq(0)
