@@ -1,5 +1,6 @@
 require './lib/station.rb'
 require './lib/coach.rb'
+require './lib/user_container.rb'
 
 class ContainerHolder; include UserContainer; end
 
