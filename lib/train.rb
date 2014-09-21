@@ -28,4 +28,15 @@ class Train
 		coaches.count
 	end
 
+	def let_enter(user)
+		raise "The train is not stopped, users can not enter" if !at_station?
+		raise "This space is full, no more user is allowed" if full?
+		users << user
+	end
+
+	def let_exit(user)
+		raise "The train is not stopped, users can not exit" if !at_station?
+		users.delete(user)
+	end
+
 end

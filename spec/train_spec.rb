@@ -42,8 +42,14 @@ let(:user) {User.new}
 		expect(train.user_count).to eq(0)
 	end
 
+	it "should load user only if stopped" do
+		train.travel
+		expect{train.let_enter(user)}.to raise_error(RuntimeError)
+	end
 
-
-
+	it "should unload user only if stopped" do
+		train.travel
+		expect{train.let_exit(user)}.to raise_error(RuntimeError)
+	end
 
 end
