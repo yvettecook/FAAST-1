@@ -33,6 +33,14 @@ describe User do
 		expect(user).to be_in_coach
 	end
 
+	it "can exit a coach to a station" do
+		user.touch_in(station)
+		user.enter(coach)
+		user.exit(coach)
+		expect(user).not_to be_in_coach
+		expect(user).to be_in_station
+	end
+
 
 
 

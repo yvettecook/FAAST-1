@@ -26,5 +26,10 @@ class User
 		@in_coach = true
 	end
 
+	def exit(coach)
+		@in_station = true
+		@in_coach = false
+	end
+
 
 end
