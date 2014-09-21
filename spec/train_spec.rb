@@ -5,14 +5,21 @@ describe  Train do
 
 let(:train) {Train.new}
 let(:station) {Station.new}
+let(:coach) {Coach.new}
 
 	it "has at least one coach" do
 		expect(train.coach_count).to eq(1)
 	end
 
-	it "can have several coaches" do
-		train = Train.new([:coach1, :coach2])
+	it "can add more coaches" do
+		expect(train.coach_count).to eq(1)
+		train.add_coach(coach)
 		expect(train.coach_count).to eq(2)
+	end
+
+	it "can't have more than 10 coaches" do
+		9.times {train.add_coach(Coach.new)}
+		expect{train.add_coach(Coach.new)}.to raise_error(RuntimeError)
 	end
 
 	it "should be at a station" do
@@ -29,5 +36,7 @@ let(:station) {Station.new}
 		train.stop
 		expect(train).to be_at_station
 	end
+
+	
 
 end

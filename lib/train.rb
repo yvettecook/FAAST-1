@@ -24,4 +24,10 @@ class Train
 	def coach_count
 		@coaches.count
 	end
+
+	def add_coach(coach)
+		raise "A train can't have more than 10 coaches" if coach_count ==10
+		@coaches << coach
+	end
+
 end
