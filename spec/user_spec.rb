@@ -51,4 +51,16 @@ describe User do
 		user.touch_out(station)
 	end
 
+	it "can enter a coach from a station if not full" do
+		expect(coach).to receive(:let_enter).with(user)
+		expect(station).to receive(:let_exit).with(user)
+		user.board_coach(station, coach)
+	end
+
+	it "can alight at a station from a coach" do
+		expect(coach).to receive(:let_exit).with(user)
+		expect(station).to receive(:let_enter).with(user)
+		user.alight_station(coach, station)
+	end
+
 end
