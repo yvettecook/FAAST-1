@@ -1,6 +1,7 @@
 require './lib/station.rb'
 require './lib/coach.rb'
 require './lib/user_container.rb'
+require './lib/user.rb'
 
 class ContainerHolder; include UserContainer; end
 
@@ -26,4 +27,21 @@ describe ContainerHolder do
 		space.let_exit(user)
 		expect(space.user_count).to eq(0)
 	end
+
+	it "should know when it's full" do
+		fill(space)
+		expect(space).to be_full
+	end
+
+	it "should not allow a new user when it's full" do
+		user = double :user
+		fill(space)
+		expect{space.let_enter(user)}.to raise_error(RuntimeError)
+	end
+
+	def fill(space)
+		space.capacity.times {space.let_enter(User.new)}
+	end
+
+
 end

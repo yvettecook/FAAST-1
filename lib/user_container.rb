@@ -19,6 +19,7 @@ module UserContainer
 	end
 
 	def let_enter(user)
+		raise "This space is full, no more user is allowed" if full?
 		users << user
 	end
 
