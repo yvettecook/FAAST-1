@@ -52,4 +52,16 @@ let(:user) {User.new}
 		expect{train.let_exit(user)}.to raise_error(RuntimeError)
 	end
 
+	it "should load all users who are in its coaches" do
+		train = Train.new
+		expect(train.user_count).to eq(0)
+		train.coaches.each do|coach| 
+			coach.let_enter(User.new)
+			coach.users.each do |user|
+				train.let_enter(user)
+			end
+		end
+		expect(train.user_count).to eq(5)
+	end
+
 end
