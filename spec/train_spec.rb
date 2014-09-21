@@ -3,23 +3,13 @@ require './lib/station.rb'
 
 describe  Train do
 
-let(:train) {Train.new}
+let(:train) {Train.new }
 let(:station) {Station.new}
 let(:coach) {Coach.new}
+let(:user) {User.new}
 
-	it "has at least one coach" do
-		expect(train.coach_count).to eq(1)
-	end
-
-	it "can add more coaches" do
-		expect(train.coach_count).to eq(1)
-		train.add_coach(coach)
-		expect(train.coach_count).to eq(2)
-	end
-
-	it "can't have more than 10 coaches" do
-		9.times {train.add_coach(Coach.new)}
-		expect{train.add_coach(Coach.new)}.to raise_error(RuntimeError)
+	it "has five coaches" do
+		expect(train.coach_count).to eq(5)
 	end
 
 	it "should be at a station" do
@@ -37,6 +27,23 @@ let(:coach) {Coach.new}
 		expect(train).to be_at_station
 	end
 
-	
+	it "has no passenger" do
+		expect(train.user_count).to eq(0)
+	end
+
+	it "can load users from a station" do
+		train.let_enter(user)
+		expect(train.user_count).to eq(1)
+	end
+
+	it "can unload users at a station" do
+		train.let_enter(user)
+		train.let_exit(user)
+		expect(train.user_count).to eq(0)
+	end
+
+
+
+
 
 end

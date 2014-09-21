@@ -1,12 +1,15 @@
 class Train
 
-	def initialize(coaches=[1])
-		@coaches = coaches
+	include UserContainer
+
+	def initialize
+		@coaches ||= [Coach.new, Coach.new, Coach.new, Coach.new, Coach.new]
+		self.capacity = 200
 		stop
 	end
 
-	def has_coaches?
-		!@coaches.nil?
+	def coaches
+		@coaches
 	end
 
 	def at_station?
@@ -22,12 +25,7 @@ class Train
 	end
 
 	def coach_count
-		@coaches.count
-	end
-
-	def add_coach(coach)
-		raise "A train can't have more than 10 coaches" if coach_count ==10
-		@coaches << coach
+		coaches.count
 	end
 
 end
