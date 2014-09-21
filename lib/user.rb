@@ -2,6 +2,7 @@ class User
 
 	def initialize
 		@in_station = false
+		@in_coach = false
 	end
 
 	def in_station?
@@ -15,4 +16,15 @@ class User
 	def touch_out(station)
 		@in_station = false
 	end
+
+	def in_coach?
+		@in_coach
+	end
+
+	def enter(coach)
+		@in_station = false
+		@in_coach = true
+	end
+
+
 end
