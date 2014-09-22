@@ -1,11 +1,39 @@
 ##General Comments
 
-Are all of the method's and features included required for the spec (i.e. Passenger/Coach/Train/Station reporting statuses)
+- Are all of the method's and features included required for the spec? 
+    - e.g. Passenger/Coach/Train/Station reporting statuses
+    - Stop method
+    
 
-README could have instructu
-
+- README could have instructions from usage (methods of objects, rules, etc)
 
 
 ##Bugs
 
-User can board coach that is not at station, without touching in.
+- User can board coach that is not at station, without touching in.
+- User can alight from a train to a station that the train is not at
+    - e.g. Sandrine is on a train at Old Street. If you call sandrine.alight_station(train.coaches[0].kings_cross) then it adds Sandrine to Kings Cross Station
+
+
+##Refactoring
+- On Train 'transit' method, the user has to enter the origin, despite the train knowing what station it is in.
+    train.rb, Line 39
+    ````
+    def transit(origin, destination)
+      exit(origin)
+      enter(destination)
+    end
+    ````
+    Could be:
+    ````
+    def transit(destination)
+      exit(@station)
+      enter(destination)
+    end
+    ````
+
+- Could add attr_reader to replace:
+    - Train's 'coaches' method
+- Could use attr_accessor to replace:
+    - User's 'in_station?', 'in_coach' and 'in_train' methods
+    - UserContainer's 'capacity' and 'capacity=(value)'
