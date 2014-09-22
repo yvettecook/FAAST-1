@@ -1,0 +1,11 @@
+##General Comments
+
+Are all of the method's and features included required for the spec (i.e. Passenger/Coach/Train/Station reporting statuses)
+
+README could have instructu
+
+
+
+##Bugs
+
+User can board coach that is not at station, without touching in.
